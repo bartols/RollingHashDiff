@@ -1,7 +1,7 @@
 #include "rolling_checksum.h"
 
 #ifdef _DEBUG
-#define DEBUG_VERBOSE
+//#define DEBUG_VERBOSE
 #endif
 
 #ifdef DEBUG_VERBOSE

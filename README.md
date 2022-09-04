@@ -13,7 +13,12 @@ B apply the delto to recreate a "foo.bin" vers 2.0
 I used IStream, OStream and IOStream to permit to users to reimplement amd provide different IO accesss, for example you could receive 
 the signature and delta file from a socket.
 
+## Note
+
+Please look at the test test_signature.cpp and test_delta.cpp for the assignement
+
 ## What is missing
+- File stream implementation
 - Create a file from Delta class
 - apply the patch to the basis file
 - complete the RollingHashDiff application parsing argument and usign rsync library
