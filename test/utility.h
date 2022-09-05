@@ -11,6 +11,11 @@ inline std::vector<byte> from_string(const char* str)
 	return {str, str + strlen(str)};
 }
 
+inline std::vector<byte> from_string(const std::string& str)
+{
+	return {str.begin(), str.end()};
+}
+
 inline void add_block(rsyn::Signature& sign_res, const std::vector<byte>& data, int index)
 {
 	rsyn::RollingChecksum rcsum;

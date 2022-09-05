@@ -30,6 +30,12 @@
     <ClCompile Include="test_delta.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="test_patch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_rsync.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mockStream.h">

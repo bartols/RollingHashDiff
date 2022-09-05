@@ -38,6 +38,11 @@ namespace rsyn {
 		virtual result read_byte(byte& ch) const = 0;
 
 		/// <summary>
+		/// restart form head the reading position
+		/// </summary>
+		virtual void restart() = 0;
+
+		/// <summary>
 		/// block size
 		/// </summary>
 		std::size_t block_size() const { return _block_size; }
@@ -52,6 +57,7 @@ namespace rsyn {
 	public:
 		virtual ~OStream() = default;
 
+		virtual bool write(const std::vector<byte>& block) = 0;
 	};
 
 	// input/output stream

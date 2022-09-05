@@ -15,18 +15,18 @@ the signature and delta file from a socket.
 
 ## Note
 
-Please look at the test test_signature.cpp and test_delta.cpp for the assignement
+Please look at the test test_rsync.cpp and test_delta.cpp for the assignement
 
 ## What is missing
 - Use of Cmake
+- block_size has to be set in IStream, better an argument for rsync functions
 - File stream implementation
 - Create a file from Delta class
-- apply the patch to the basis file
 - complete the RollingHashDiff application parsing argument and usign rsync library
 - a better rolling hash algorithm 
 - use a better container for byte read from stream (a circular buffer ?)
 
 ## Requirements
 
-- Visual Studio 2019
+- Visual Studio 2022
 

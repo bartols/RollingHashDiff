@@ -19,6 +19,9 @@
 
 namespace rsyn {
 
+	// todo maybe a class ??
+	using chunk = std::variant<int, std::vector<byte>>;
+
 	class Delta
 	{
 	public:
@@ -65,6 +68,12 @@ namespace rsyn {
 			_parts.emplace_back(index);
 		}
 
+		auto begin()		{ return _parts.begin(); }
+		auto end()			{ return _parts.begin(); }
+
+		const auto begin() const	{ return _parts.begin(); }
+		const auto end() const		{ return _parts.end(); }
+
 		// only for test pourpouse
 		std::string dump() const
 		{
@@ -84,7 +93,7 @@ namespace rsyn {
 			return res;
 		}
 	private:
-		std::vector<std::variant<int, std::vector<byte>>> _parts;
+		std::vector<chunk> _parts;
 	};
 
 } // namespace rsyn

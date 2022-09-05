@@ -40,8 +40,23 @@ public:
 		return rsyn::result::ok;
 	}
 
+	void restart() override { _position = 0; }
+
 private:
 	const std::vector<byte>& _input_data;
 	mutable std::size_t _position = 0;
 };
 
+class MockOStream : public rsyn::OStream
+{
+public:
+	bool write(const std::vector<byte>& block) override
+	{
+		_buffer.append(block.begin(), block.end());
+		return true;
+	}
+
+	const std::string& buffer() const	{ return _buffer; }
+private:
+	std::string _buffer;
+};

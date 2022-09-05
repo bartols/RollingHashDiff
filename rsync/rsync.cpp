@@ -3,23 +3,12 @@
 #include "rsync.h"
 
 #include "rolling_checksum.h"
-#include "sha1.h"
-
-#include <strstream>
 
 #ifdef _DEBUG
 //#define DEBUG_VERBOSE
 #endif
 
 using namespace rsyn;
-
-std::string strong_signature(const std::vector<byte>& block)
-{
-	std::istrstream stream(reinterpret_cast<const char*>(block.data()), block.size());
-	SHA1 sha1;
-	sha1.update(stream);
-	return sha1.final();
-}
 
 // calculate signature from basis_file stream
 bool rsyn::signature(const IStream& basis_file, Signature& signature)
@@ -128,9 +117,36 @@ bool rsyn::delta(const Signature& signature, const IStream& new_file, OStream& d
 }
 
 // patch using signature and delta class to produce output_file
-bool rsyn::patch(const Signature& signature, const Delta& delta, OStream& output_file)
+bool rsyn::patch(const Signature& signature, const IStream& basis_file, const Delta& delta, OStream& output_file)
 {
-	return false;
+	// create original part db
+	std::vector<strOriginalPart> original_part;
+	if (!extract_original_parts(signature, basis_file, original_part))
+		return false;
+
+	// for each part of Delta
+	for (const auto& part : delta)
+	{
+		// if an old part
+		if (std::holds_alternative<int>(part))
+		{
+			// find in original part
+			auto index = std::get<0>(part);
+			auto it = std::find_if(original_part.begin(), original_part.end(), [index](const auto& part) {
+				return part.index == index;
+				});
+			if (it == original_part.end())
+				return false;
+
+			output_file.write((*it).block);;
+		}
+		else
+		// if new
+		{
+			output_file.write(std::get<1>(part));
+		}
+	}
+	return true;
 }
 
 // patch basis_file using delta_file to produce output_file (recalculate signature)
