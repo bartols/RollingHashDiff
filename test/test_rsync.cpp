@@ -13,7 +13,6 @@
 #include <iostream>
 #endif
 
-
 class RSyncTest : public ::testing::Test {
 protected:
 	void apply_patch(const std::string& original, const std::string& modified, std::size_t block_size)
