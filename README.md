@@ -18,6 +18,7 @@ the signature and delta file from a socket.
 Please look at the test test_signature.cpp and test_delta.cpp for the assignement
 
 ## What is missing
+- Use of Cmake
 - File stream implementation
 - Create a file from Delta class
 - apply the patch to the basis file
