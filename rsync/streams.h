@@ -8,6 +8,8 @@ namespace rsyn {
 	enum class result {
 		ok,
 		eof,
+		file_not_exist,
+		error
 	};
 
 	// input stream
@@ -57,15 +59,8 @@ namespace rsyn {
 	public:
 		virtual ~OStream() = default;
 
-		virtual bool write(const std::vector<byte>& block) = 0;
-	};
-
-	// input/output stream
-	class IOStream
-	{
-	public:
-		virtual ~IOStream() = default;
-
+		// write block
+		virtual result write(const std::vector<byte>& block) = 0;
 	};
 
 } // namespace rsyn

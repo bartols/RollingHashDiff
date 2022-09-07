@@ -36,6 +36,9 @@
     <ClCompile Include="test_rsync.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="test_file_stream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mockStream.h">
@@ -44,5 +47,13 @@
     <ClInclude Include="utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="iexist.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="iexistempty.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

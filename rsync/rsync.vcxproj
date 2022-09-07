@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="delta.h" />
+    <ClInclude Include="file_stream.h" />
     <ClInclude Include="rolling_checksum.h" />
     <ClInclude Include="rsync.h" />
     <ClInclude Include="rsync_defs.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="streams.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="file_stream.cpp" />
     <ClCompile Include="rolling_checksum.cpp" />
     <ClCompile Include="rsync.cpp" />
     <ClCompile Include="signature.cpp" />

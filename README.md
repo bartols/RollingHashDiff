@@ -20,7 +20,7 @@ Please look at the test test_rsync.cpp and test_delta.cpp for the assignement
 ## What is missing
 - Use of Cmake
 - block_size has to be set in IStream, better an argument for rsync functions
-- File stream implementation
+- remove IStream/OStream (mock and file derived class also) and use STL istream/ostream
 - Create a file from Delta class
 - complete the RollingHashDiff application parsing argument and usign rsync library
 - a better rolling hash algorithm 

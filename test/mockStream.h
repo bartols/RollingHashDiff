@@ -30,7 +30,7 @@ public:
 		return rsyn::result::ok;
 	}
 
-	rsyn::result read_byte(byte& ch) const
+	rsyn::result read_byte(byte& ch) const override
 	{
 		if (_position >= _input_data.size())
 			return rsyn::result::eof;
@@ -50,10 +50,10 @@ private:
 class MockOStream : public rsyn::OStream
 {
 public:
-	bool write(const std::vector<byte>& block) override
+	rsyn::result write(const std::vector<byte>& block) override
 	{
 		_buffer.append(block.begin(), block.end());
-		return true;
+		return rsyn::result::ok;
 	}
 
 	const std::string& buffer() const	{ return _buffer; }

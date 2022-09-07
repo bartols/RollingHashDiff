@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="test.cpp" />
     <ClCompile Include="test_delta.cpp" />
+    <ClCompile Include="test_file_stream.cpp" />
     <ClCompile Include="test_mock.cpp" />
     <ClCompile Include="test_patch.cpp" />
     <ClCompile Include="test_rolling_checksum.cpp" />
@@ -142,6 +143,10 @@
   <ItemGroup>
     <ClInclude Include="mockStream.h" />
     <ClInclude Include="utility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="iexist.txt" />
+    <Text Include="iexistempty.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
