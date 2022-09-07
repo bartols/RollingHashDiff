@@ -24,6 +24,7 @@ namespace rsyn {
 
 	private:
 		mutable std::ifstream _stream;
+		mutable bool _eof = false;
 		result read(byte* data, std::size_t len, std::size_t& read_len) const;
 	};
 

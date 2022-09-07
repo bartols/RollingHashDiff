@@ -47,7 +47,9 @@ TEST(FileIStream, ReadByteThenBlock)
 	ASSERT_EQ(fs.read_byte(ch), rsyn::result::ok);
 
 	std::vector<byte> data;
-	ASSERT_EQ(fs.read_block(data), rsyn::result::eof);
+	ASSERT_EQ(fs.read_block(data), rsyn::result::ok);
+
+ 	ASSERT_EQ(fs.read_block(data), rsyn::result::eof);
 }
 
 TEST(FileIStream, ReadBlockThenRestart)

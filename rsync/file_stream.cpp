@@ -37,6 +37,7 @@ result FileIStream::read_byte(byte& ch) const
 // restart form head the reading position
 void FileIStream::restart()
 {
+	_eof = false;
 	_stream.seekg(0, std::ios::beg);
 }
 
@@ -46,14 +47,21 @@ result FileIStream::read(byte* data, std::size_t len, std::size_t& read_len) con
 	if (!_stream.is_open())
 		return result::file_not_exist;
 
-	if (_stream.eof())
+	if (_eof || _stream.eof())
 		return result::eof;
 
 	_stream.read(reinterpret_cast<char*>(data), len);
 	read_len = _stream.gcount();
 
 	if (_stream.eof() )
-		return result::eof;
+	{
+		if(read_len == 0)
+			return result::eof;
+
+		// to return eof on next read
+		_eof = true;
+		return result::ok;
+	}
 
 	if (_stream.fail())
 		return result::error;
