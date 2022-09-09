@@ -38,7 +38,7 @@ TEST(Delta, EmptySignatureLittleFile)
 	rsyn::Delta delta;
 	ASSERT_TRUE(rsyn::delta(sign, is, delta));
 
-	ASSERT_EQ(delta.dump(), "");
+	ASSERT_EQ(delta.dump(), "aa");
 }
 
 TEST(Delta, EqualFile)

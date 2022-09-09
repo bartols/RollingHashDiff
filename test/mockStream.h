@@ -13,9 +13,6 @@ public:
 
 	rsyn::result read_block(std::vector<byte>& block) const override
 	{
-		if(_input_data.size() < block_size() )
-			return rsyn::result::eof;
-
 		if(_position >= _input_data.size())
 			return rsyn::result::eof;
 

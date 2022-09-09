@@ -22,9 +22,11 @@ TEST(RDiff, SignatureLessThanBlockSize)
 	MockIStream is(buffer, 3);
 
 	rsyn::Signature sign;
+	rsyn::Signature sign_res;
+	add_block(sign_res, from_string("aa"), 0);
 
 	ASSERT_TRUE(rsyn::signature(is, sign));
-	ASSERT_TRUE(sign.empty());
+	ASSERT_EQ(sign, sign_res);
 }
 
 TEST(RDiff, SignatureBlockEqual)

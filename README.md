@@ -10,8 +10,7 @@ B generate signature of file "foo.bin"(1.0) and send to machine A, A compute the
 B apply the delto to recreate a "foo.bin" vers 2.0
 
 
-I used IStream, OStream and IOStream to permit to users to reimplement amd provide different IO accesss, for example you could receive 
-the signature and delta file from a socket.
+I used IStream and OStream to permit to users to reimplement and provide a different IO accesss.
 
 ## Note
 

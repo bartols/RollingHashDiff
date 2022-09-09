@@ -118,5 +118,6 @@ TEST(MockIStream, bufferLessThanBlockSize)
 	std::vector<byte> block;
 	MockIStream is(buffer, 3);
 
-	ASSERT_EQ(is.read_block(block), rsyn::result::eof);
+	ASSERT_EQ(is.read_block(block), rsyn::result::ok);
+	ASSERT_EQ(block.size(), 2);
 }
