@@ -21,8 +21,8 @@ namespace rsyn {
 		int64_t roll(byte remove, byte add);
 	private:
 		std::size_t _block_size = 0;
-		uint32_t _sum1 = 0;
-		uint32_t _sum2 = 0;
+		int32_t _sum1 = 0;
+		int32_t _sum2 = 0;
 	};
 
 } // namespace rsyn

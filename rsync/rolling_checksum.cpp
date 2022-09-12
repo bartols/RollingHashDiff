@@ -13,7 +13,7 @@ using namespace rsyn;
 
 #if defined(ADLER32_ALGO)
 
-static const uint32_t Base = 65521;
+static const int32_t Base = 65521;
 
 int64_t RollingChecksum::calculate(const std::vector<byte>& data)
 {
@@ -47,7 +47,7 @@ int64_t RollingChecksum::roll(byte remove, byte add)
         _sum1 += Base;
     }
 
-    _sum2 = ((int32_t)(_sum2 - _block_size * remove + _sum1 - 1) % (int32_t)Base);
+    _sum2 = (_sum2 - _block_size * remove + _sum1 - 1) % Base;
     if (_sum2 < 0)
     {
         _sum2 += Base;
