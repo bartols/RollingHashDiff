@@ -23,7 +23,6 @@ TEST(RDiff, SignatureLessThanBlockSize)
 
 	rsyn::Signature sign;
 	rsyn::Signature sign_res;
-	add_block(sign_res, from_string("aa"), 0);
 
 	ASSERT_TRUE(rsyn::signature(is, sign));
 	ASSERT_EQ(sign, sign_res);
@@ -41,7 +40,6 @@ TEST(RDiff, SignatureBlockEqual)
 	rsyn::Signature sign_res;
 	add_block(sign_res, from_string("aaa"), 0);
 	add_block(sign_res, from_string("bbb"), 1);
-	add_block(sign_res, {'a'}, 4);
 
 	ASSERT_EQ(sign, sign_res);
 }

@@ -19,6 +19,10 @@ bool rsyn::signature(const IStream& basis_file, Signature& signature)
 	std::vector<byte> block;
 	while (basis_file.read_block(block) == result::ok)
 	{
+		// last part of file
+		if (block.size() < basis_file.block_size())
+			continue;
+
 		// weak signature
 		auto weak_sig = rcsum.calculate(block);
 
@@ -34,14 +38,10 @@ bool rsyn::signature(const IStream& basis_file, Signature& signature)
 			signature.add(weak_sig, strong_sig, block_idx);
 			++block_idx;
 		}
-		// if same checksum
-		else if (strong_sig == entry.strong)
+		// if different checksum
+		else if (strong_sig != entry.strong)
 		{
-			++block_idx;
-		}
-		// if different something strange happens
-		else
-		{
+			// something strange happens
 			return false;
 		}
 	}
